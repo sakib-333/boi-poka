@@ -3,6 +3,7 @@ import Root from "../components/Root/Root";
 import PageNotFound from "../components/Body/BodyComponents/PageNotFound";
 import Home from "../components/Body/BodyComponents/Home";
 import ListedBooks from "../components/Body/BodyComponents/ListedBooks";
+import PagesToRead from "../components/Body/BodyComponents/PagesToRead";
 
 export const router = createBrowserRouter([
   {
@@ -17,6 +18,10 @@ export const router = createBrowserRouter([
       {
         path: "/listed-books",
         element: <ListedBooks />,
+      },
+      {
+        path: "/pages-to-read",
+        element: <PagesToRead />,
       },
     ],
   },
