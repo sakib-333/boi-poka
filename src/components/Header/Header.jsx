@@ -4,10 +4,10 @@ import Banner from "./HeaderComponents/Banner";
 
 const Header = () => {
   return (
-    <>
+    <div className="px-2">
       <Navbar />
       <Banner />
-    </>
+    </div>
   );
 };
 
