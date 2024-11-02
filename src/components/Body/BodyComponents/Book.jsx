@@ -1,18 +1,18 @@
 import React from "react";
 
-import BannerBook from "../../Header/HeaderComponents/assets/banner-book.svg";
+import BannerImage from "./assets/banner-image.svg";
 import Star from "./assets/star.svg";
 import { Link } from "react-router-dom";
 
 const Book = () => {
   const id = 5;
   return (
-    <Link to={`/book?id=${id}`}>
+    <Link to={`/books/id=${id}`}>
       <div className="mx-auto max-w-[375px] w-full border p-4 space-y-3 rounded-xl">
         <div className="bg-base-200 h-[230px] rounded-lg">
           <img
             className="w-full h-full p-4 box-border"
-            src={BannerBook}
+            src={BannerImage}
             alt="book"
           />
         </div>
