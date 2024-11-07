@@ -11,6 +11,7 @@ export const router = createBrowserRouter([
     path: "/",
     element: <Root />,
     errorElement: <PageNotFound />,
+    loader: () => fetch("/BooksDB.json"),
     children: [
       {
         path: "/",
