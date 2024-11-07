@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "../Header/Header";
 import Body from "../Body/Body";
 import Footer from "../Footer/Footer";
@@ -7,9 +7,10 @@ import { useLoaderData } from "react-router-dom";
 
 const Root = () => {
   const books = useLoaderData();
-  console.log(books);
+  const [wishlist, setWishlist] = useState([]);
+
   return (
-    <BookVibeContext.Provider value={{}}>
+    <BookVibeContext.Provider value={{ books, wishlist, setWishlist }}>
       <Header />
       <Body />
       <Footer />
