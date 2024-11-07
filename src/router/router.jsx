@@ -26,7 +26,7 @@ export const router = createBrowserRouter([
         element: <PagesToRead />,
       },
       {
-        path: "/books/:id",
+        path: "/books/:bookID",
         element: <BookDetails />,
       },
     ],
