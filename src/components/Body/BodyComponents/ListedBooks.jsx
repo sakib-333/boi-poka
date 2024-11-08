@@ -70,14 +70,13 @@ const ListedBooks = () => {
         />
         <div
           role="tabpanel"
-          className="tab-content bg-base-100 border-base-300 p-6 border-b-0 border-l-0 border-r-0"
+          className="tab-content bg-base-100 border-base-300 p-6 border-b-0 border-l-0 border-r-0 space-y-3"
         >
           {wishlist.length ? (
-            wishlist.map((book) => <WishlistBooks key={book.bookId} />)
+            wishlist.map((book) => <ReadBooks book={book} key={book.bookId} />)
           ) : (
             <h1>No books added</h1>
           )}
-          <WishlistBooks />
         </div>
         {/* Wishlist Books end */}
       </div>
