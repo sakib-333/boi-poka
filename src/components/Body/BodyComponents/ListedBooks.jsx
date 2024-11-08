@@ -1,12 +1,14 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 
 import ChevronUpIcon from "./assets/chevron-up-icon.svg";
 import ChevronDownIcon from "./assets/chevron-down-icon.svg";
 import ReadBooks from "./ReadBooks";
 import WishlistBooks from "./WishlistBooks";
+import { BookVibeContext } from "../../../Context/BookVibeContext";
 
 const ListedBooks = () => {
   const [clicked, setClicked] = useState(false);
+  const { books } = useContext(BookVibeContext);
 
   return (
     <div>
@@ -50,9 +52,11 @@ const ListedBooks = () => {
         />
         <div
           role="tabpanel"
-          className="tab-content bg-base-100 border-base-300 p-6 border-b-0 border-l-0 border-r-0"
+          className="tab-content bg-base-100 border-base-300 p-6 border-b-0 border-l-0 border-r-0 space-y-3"
         >
-          <ReadBooks />
+          {books.map((book) => (
+            <ReadBooks key={book.bookId} book={book} />
+          ))}
         </div>
         {/* Read Books end */}
         {/* Wishlist Books start */}
