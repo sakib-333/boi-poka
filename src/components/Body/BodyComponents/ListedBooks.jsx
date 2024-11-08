@@ -1,21 +1,24 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 import ChevronUpIcon from "./assets/chevron-up-icon.svg";
 import ChevronDownIcon from "./assets/chevron-down-icon.svg";
 import ReadBooks from "./ReadBooks";
-import WishlistBooks from "./WishlistBooks";
 import { BookVibeContext } from "../../../Context/BookVibeContext";
+import { sortReadBooks } from "./sortReadBooks";
 
 const ListedBooks = () => {
-  const [clicked, setClicked] = useState(false);
   const { books, wishlist, setWishlist } = useContext(BookVibeContext);
+  const [clicked, setClicked] = useState(false);
+  const [tab, setTab] = useState(true);
+  const [listedBooks, setListedBooks] = useState(books);
+  const [wishlistBooks, setWishlistBooks] = useState([]);
 
   return (
     <div>
       <div className="card bg-base-300 rounded-box grid h-20 place-items-center font-sans font-bold">
         Books
       </div>
-      <div className="flex justify-center">
+      <div className="flex justify-center mt-4">
         <details className="dropdown font-sans">
           <summary
             className="btn bg-green-500 text-white font-bold"
@@ -29,13 +32,31 @@ const ListedBooks = () => {
           </summary>
           <ul className="menu dropdown-content bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
             <li>
-              <button>Rating</button>
+              <button
+                onClick={() =>
+                  sortReadBooks(listedBooks, setListedBooks, "rating")
+                }
+              >
+                Rating
+              </button>
             </li>
             <li>
-              <button>Number of pages</button>
+              <button
+                onClick={() =>
+                  sortReadBooks(listedBooks, setListedBooks, "number-of-pages")
+                }
+              >
+                Number of pages
+              </button>
             </li>
             <li>
-              <button>Publisher year</button>
+              <button
+                onClick={() =>
+                  sortReadBooks(listedBooks, setListedBooks, "publisher-year")
+                }
+              >
+                Publisher year
+              </button>
             </li>
           </ul>
         </details>
@@ -49,12 +70,13 @@ const ListedBooks = () => {
           className="tab font-sans border-b-0"
           aria-label="Read Books"
           defaultChecked
+          onClick={() => setClicked(true)}
         />
         <div
           role="tabpanel"
           className="tab-content bg-base-100 border-base-300 p-6 border-b-0 border-l-0 border-r-0 space-y-3"
         >
-          {books.map((book) => (
+          {listedBooks.map((book) => (
             <ReadBooks key={book.bookId} book={book} />
           ))}
         </div>
@@ -67,6 +89,7 @@ const ListedBooks = () => {
           role="tab"
           className="tab font-sans"
           aria-label="Wishlist Books"
+          onClick={() => setClicked(false)}
         />
         <div
           role="tabpanel"
