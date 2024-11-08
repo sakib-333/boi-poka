@@ -9,7 +9,7 @@ const Book = ({ book }) => {
       <div className="mx-auto max-w-[375px] w-full border p-4 space-y-3 rounded-xl">
         <div className="bg-base-200 h-[230px] rounded-lg">
           <img
-            className="w-full h-full box-border rounded-xl"
+            className="w-[150px] h-full mx-auto py-4 box-border rounded-xl"
             src={book.image}
             alt="book"
           />
