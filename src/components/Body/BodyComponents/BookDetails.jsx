@@ -2,10 +2,12 @@ import React, { useContext } from "react";
 
 import { useParams } from "react-router-dom";
 import { BookVibeContext } from "../../../Context/BookVibeContext";
+import { addToWishList } from "./addToWishList";
 
 const BookDetails = () => {
-  const { books } = useContext(BookVibeContext);
+  const { books, wishlist, setWishlist } = useContext(BookVibeContext);
   const { bookID } = useParams();
+  const selectedBook = books.find((book) => book.bookId === Number(bookID));
   const {
     image,
     bookName,
@@ -17,7 +19,7 @@ const BookDetails = () => {
     publisher,
     yearOfPublishing,
     rating,
-  } = books.find((book) => book.bookId === Number(bookID));
+  } = selectedBook;
   return (
     <div className="hero min-h-fit">
       <div className="hero-content flex-col lg:flex-row lg:space-x-8">
@@ -62,7 +64,10 @@ const BookDetails = () => {
             <button className="font-bold px-4 py-2 rounded-lg border border-gray-400 hover:bg-black hover:text-white">
               Read
             </button>
-            <button className="font-bold px-4 py-2 rounded-lg bg-cyan-400 text-white hover:opacity-50">
+            <button
+              className="font-bold px-4 py-2 rounded-lg bg-cyan-400 text-white hover:opacity-50"
+              onClick={() => addToWishList(wishlist, setWishlist, selectedBook)}
+            >
               Wishlist
             </button>
           </div>
