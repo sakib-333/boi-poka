@@ -5,6 +5,7 @@ import ChevronDownIcon from "./assets/chevron-down-icon.svg";
 import ReadBooks from "./ReadBooks";
 import { BookVibeContext } from "../../../Context/BookVibeContext";
 import { sortReadBooks } from "./sortReadBooks";
+import { sortWishList } from "./sortWishList";
 
 const ListedBooks = () => {
   const { books, wishlist, setWishlist } = useContext(BookVibeContext);
@@ -34,7 +35,9 @@ const ListedBooks = () => {
             <li>
               <button
                 onClick={() =>
-                  sortReadBooks(listedBooks, setListedBooks, "rating")
+                  tab
+                    ? sortReadBooks(listedBooks, setListedBooks, "rating")
+                    : sortWishList(wishlist, setWishlist, "rating")
                 }
               >
                 Rating
@@ -43,7 +46,13 @@ const ListedBooks = () => {
             <li>
               <button
                 onClick={() =>
-                  sortReadBooks(listedBooks, setListedBooks, "number-of-pages")
+                  tab
+                    ? sortReadBooks(
+                        listedBooks,
+                        setListedBooks,
+                        "number-of-pages"
+                      )
+                    : sortWishList(wishlist, setWishlist, "number-of-pages")
                 }
               >
                 Number of pages
@@ -52,7 +61,13 @@ const ListedBooks = () => {
             <li>
               <button
                 onClick={() =>
-                  sortReadBooks(listedBooks, setListedBooks, "publisher-year")
+                  tab
+                    ? sortReadBooks(
+                        listedBooks,
+                        setListedBooks,
+                        "publisher-year"
+                      )
+                    : sortWishList(wishlist, setWishlist, "publisher-year")
                 }
               >
                 Publisher year
@@ -70,7 +85,7 @@ const ListedBooks = () => {
           className="tab font-sans border-b-0"
           aria-label="Read Books"
           defaultChecked
-          onClick={() => setClicked(true)}
+          onChange={() => setTab(() => true)}
         />
         <div
           role="tabpanel"
@@ -89,7 +104,7 @@ const ListedBooks = () => {
           role="tab"
           className="tab font-sans"
           aria-label="Wishlist Books"
-          onClick={() => setClicked(false)}
+          onChange={() => setTab(() => false)}
         />
         <div
           role="tabpanel"
