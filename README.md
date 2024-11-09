@@ -1,8 +1,39 @@
-# React + Vite
+# Boi Poka
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Description
 
-Currently, two official plugins are available:
+Discover your next great read at **Boi Poka**, where book lovers find their perfect match. Explore curated recommendations, insightful reviews. Start your literary adventure today!
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## React Fundamental concepts used
+
+1. JSX
+
+2. State
+
+3. React hooks
+
+4. React router
+
+5. React charts(Rechart)
+
+6. React Toastify
+
+## Five key features
+
+1. See all books
+
+2. Different routing with error page.
+
+3. View single book details in dynamic route.
+
+4. Add book to wishlist.
+
+5. Sort books based on numbers of pages, published year, rating.
+
+## For Data Management
+
+1. Context API
+
+## Live links
+
+1. Live link: [visit](https://sakib-333-boi-poka.netlify.app/)
